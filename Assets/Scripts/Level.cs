@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class Level : MonoBehaviour
 {
-    public GameObject win;
-    public GameObject keyInInterface;
-    public GameObject AdResultObj;
     public Text text;
     public string nextLevel;
     public GameObject Finish;
-    public GameObject Key;
     public Button Next;
     public Button Menu;
     public GameObject MenuDialog;
@@ -37,12 +33,10 @@ public class Level : MonoBehaviour
         // Buttons
         Next.onClick.AddListener(Nxt);
         Menu.onClick.AddListener(Mn);
-        Next.interactable = false;
         ExitGame.onClick.AddListener(ext);
         MainMenu.onClick.AddListener(Men);
         Continue.onClick.AddListener(Contn);
         NextLevelad.onClick.AddListener(NextLevel);
-        keyInInterface.SetActive(false);
     }
     void NextLevel()
     {

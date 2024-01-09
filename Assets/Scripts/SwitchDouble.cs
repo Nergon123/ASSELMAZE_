@@ -10,8 +10,21 @@ public class SwitchDouble : MonoBehaviour
     SpriteRenderer sr;
     public Sprite off;
     public Sprite on;
-    public bool status;
-    bool CoroutineIsStarted = false;
+    public bool _status;
+
+    private Coroutine m_crMain;
+    public bool status
+    {
+        get => _status;
+        set
+        {
+            _status = value;
+            if (_status && m_crMain == null)
+            {
+                m_crMain = StartCoroutine(Coroutine());
+            }
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +36,7 @@ public class SwitchDouble : MonoBehaviour
     }
     IEnumerator Coroutine()
     {
-        CoroutineIsStarted = true;
         sr.sprite = on;
-        status = true;
         switchDoor.SetActive(false);
         switchDoor2.SetActive(true);
         audioSource.PlayOneShot(AC, 1f);
@@ -35,19 +46,8 @@ public class SwitchDouble : MonoBehaviour
         audioSource.Stop();
         status = false;
         sr.sprite = off;
-        CoroutineIsStarted = false;
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
+        m_crMain = null;
 
-        if (status == true)
-        {
-            if (CoroutineIsStarted == false)
-            {
-                StartCoroutine(Coroutine());
-            }
-        }
     }
 }

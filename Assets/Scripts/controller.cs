@@ -15,7 +15,7 @@ public class controller : MonoBehaviour
     public Vector2 PlyLocation1;
     public Vector2 PlyLocation2;
     public Vector2 PlyLocation3;
-    public Button Next;
+
     public Rigidbody2D m_rbMain;
     public float m_fSpeed = 1f;
     public GameObject Finish;
@@ -32,6 +32,7 @@ public class controller : MonoBehaviour
     {
         m_rbMain = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
+
         switch (PlayerPrefs.GetInt("skin"))
         {
             case 0:
@@ -64,10 +65,8 @@ public class controller : MonoBehaviour
         {
             PlayerPrefs.SetInt("LEVEL", numberOfLevel);
         }
-        win.SetActive(false);
 
         Finish.SetActive(false);
-        Next = Next.GetComponent<Button>();
 
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
@@ -75,26 +74,25 @@ public class controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "wall")
         {
-            source.PlayOneShot(clipkick, 1);
+            source.PlayOneShot(clipkick, 0.5f);
         }
     }
     void OnTriggerEnter2D(Collider2D other)
     {
+        var Hp = PlayerPrefs.GetInt("hp");
         if (other.gameObject.tag == "InvertControls")
         {
             m_binvCtrls = true;
         }
         if (other.gameObject.tag == "health")
         {
-            PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") + 1);
+            PlayerPrefs.SetInt("hp", Hp++);
             Destroy(other.gameObject);
         }
         if (other.gameObject.tag == "Finish")
         {
-            Next.interactable = true;
-            Time.timeScale = 0.0f;
+            Time.timeScale = 0;
             win.SetActive(true);
-
         }
         if (other.gameObject.tag == "key")
         {
@@ -115,14 +113,16 @@ public class controller : MonoBehaviour
 
         if (other.gameObject.tag == "enemy")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") - 1);
-            if (PlayerPrefs.GetInt("hp") < 0)
+            Hp--;
+
+            PlayerPrefs.SetInt("hp",Hp);
+
+            if (Hp < 0)
             {
                 PlayerPrefs.SetInt("LEVEL", 1);
                 SceneManager.LoadScene("LEVEL1");
-
             }
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
         if (other.gameObject.tag == "coin")
         {
@@ -131,12 +131,12 @@ public class controller : MonoBehaviour
 
         if (other.gameObject.tag == "Switch")
         {
-            other.gameObject.GetComponent<Switch>().status = true;
+            other.GetComponent<Switch>().status = true;
 
         }
         if (other.gameObject.tag == "SwitchDouble")
         {
-            other.gameObject.GetComponent<SwitchDouble>().status = true;
+            other.GetComponent<SwitchDouble>().status = true;
 
         }
     }
