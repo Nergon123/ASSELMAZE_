@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 ﻿using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
@@ -5,11 +6,20 @@ using UnityEngine.UI;
 
 
 public class Level : MonoBehaviour, IUnityAdsListener
+=======
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
+
+public class Level : MonoBehaviour
+>>>>>>> Stashed changes
 {
     public GameObject win;
     public GameObject keyInInterface;
     public GameObject AdResultObj;
-    public Text AdResult;
     public Text text;
     public string nextLevel;
     public GameObject Finish;
@@ -19,32 +29,23 @@ public class Level : MonoBehaviour, IUnityAdsListener
     public GameObject MenuDialog;
     //Menu 
     public Button Continue;
-    int ad;
     public Button MainMenu;
     public Button ExitGame;
     public Button NextLevelad;
-    string showresult;
-    string gameId = "3550400";
-    string myPlacementId = "rewardedVideo";
-    public Button AdOk;
-    public bool Ad = false;
+
     public bool endOfChapter = false;
+
     public int NextChapter;
-    int numberoflevel = 0;
-    string mmenu;
-    string menu;
-    string cntinue;
-    string lvl;
-    string exitg;
-    string reklama;
-    string lvlcmplt;
+
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
         PlayerPrefs.SetString("pause", "false");
         NextLevelad.interactable = false;
-        Advertisement.AddListener(this);
         //GameObjects
         Finish.SetActive(false);
         MenuDialog.SetActive(false);
@@ -56,9 +57,8 @@ public class Level : MonoBehaviour, IUnityAdsListener
         MainMenu.onClick.AddListener(Men);
         Continue.onClick.AddListener(Contn);
         NextLevelad.onClick.AddListener(NextLevel);
-        ad = 0;
-        AdOk.onClick.AddListener(adok);
         keyInInterface.SetActive(false);
+<<<<<<< Updated upstream
         numberoflevel = int.Parse(nextLevel.Replace("LEVEL", "")) - 1;
         switch (Application.systemLanguage)
         {
@@ -103,21 +103,16 @@ public class Level : MonoBehaviour, IUnityAdsListener
     {
         AdResultObj.SetActive(false);
         MenuDialog.SetActive(false);
+=======
+>>>>>>> Stashed changes
     }
     void NextLevel()
     {
-        if (ad >= 3)
-        {
-            Time.timeScale = 1.0f;
-            PlayerPrefs.SetString("pause", "false");
-            SceneManager.LoadScene(nextLevel);
-        }
-        else
-        {
-            Advertisement.Show("rewardedVideo");
-            ad++;
-        }
+        Time.timeScale = 1f;
+        PlayerPrefs.SetString("pause", "false");
+        SceneManager.LoadScene(nextLevel);
     }
+<<<<<<< Updated upstream
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
         Debug.Log(placementId);
@@ -165,45 +160,56 @@ public class Level : MonoBehaviour, IUnityAdsListener
     public void OnUnityAdsReady(string placementId) { }
     public void OnUnityAdsDidError(string message) { Debug.Log(message); }
     public void OnUnityAdsDidStart(string placementId) { }
+=======
+
+>>>>>>> Stashed changes
     void Contn()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         PlayerPrefs.SetString("pause", "false");
         MenuDialog.SetActive(false);
     }
     void ext()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         PlayerPrefs.SetString("pause", "false");
         Application.Quit();
     }
     void Men()
     {
-        Time.timeScale = 1.0f;
+        Time.timeScale = 1f;
         PlayerPrefs.SetString("pause", "false");
         SceneManager.LoadScene("Menu");
     }
 
     void Nxt()
     {
+<<<<<<< Updated upstream
         if (Ad == true)
         {
             Advertisement.Show();
             Debug.Log("AD Showed");
         }
+=======
+>>>>>>> Stashed changes
         if (endOfChapter == true)
         {
             PlayerPrefs.SetInt("CHAPTER", NextChapter);
         }
+<<<<<<< Updated upstream
         Time.timeScale = 1.0f;
+=======
+        Time.timeScale = 1f;
+>>>>>>> Stashed changes
         SceneManager.LoadScene(nextLevel);
     }
     void Mn()
     {
         MenuDialog.SetActive(true);
-        Time.timeScale = 0.0f;
+        Time.timeScale = 0;
         PlayerPrefs.SetString("pause", "true");
     }
+<<<<<<< Updated upstream
     // Update is called once per frame
     void Update()
     {
@@ -211,4 +217,6 @@ public class Level : MonoBehaviour, IUnityAdsListener
         if (GameObject.Find("/player"))
             keyInInterface.SetActive(GameObject.Find("/player").GetComponent<controller>().haskey);
     }
+=======
+>>>>>>> Stashed changes
 }
