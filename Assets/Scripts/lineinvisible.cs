@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class lineinvisible : MonoBehaviour
 {
@@ -13,14 +11,14 @@ public class lineinvisible : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             sr.color = Color.white;
         }
     }
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             sr.color = Color.clear;
         }
@@ -28,6 +26,6 @@ public class lineinvisible : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class BlackHardMode : MonoBehaviour
 {
@@ -19,7 +17,7 @@ public class BlackHardMode : MonoBehaviour
         text.fontSize = 70;
         count++;
         text.text = "Click " + (5 - count).ToString() + " times to Enable black skin";
-        if(count >= 5)
+        if (count >= 5)
         {
             text.text = "Hard (black skin) mode enabled!";
             PlayerPrefs.SetInt("skin", 100);
@@ -28,6 +26,6 @@ public class BlackHardMode : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class lineskin : MonoBehaviour
 {
-    
+
     // Start is called before the first frame update
-   SpriteRenderer sr ;
+    SpriteRenderer sr;
     void Start()
     {
-        
-        sr = GetComponent<SpriteRenderer>();   
+
+        sr = GetComponent<SpriteRenderer>();
     }
-    
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (PlayerPrefs.GetString("rainbow") == "true")

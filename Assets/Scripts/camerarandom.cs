@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class camerarandom : MonoBehaviour
@@ -11,16 +10,18 @@ public class camerarandom : MonoBehaviour
         cam = GetComponent<Camera>();
         StartCoroutine(Lol());
     }
-    IEnumerator Lol(){
-    while (true) {
-    	yield return new WaitForSeconds(0.2f);
-    	cam.backgroundColor = Random.ColorHSV();
-    }
-       
+    IEnumerator Lol()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.2f);
+            cam.backgroundColor = Random.ColorHSV();
+        }
+
     }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class passwordRandom : MonoBehaviour
 {
@@ -31,6 +28,6 @@ public class passwordRandom : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

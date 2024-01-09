@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Settings : MonoBehaviour
 {
@@ -11,7 +9,7 @@ public class Settings : MonoBehaviour
     [SerializeField]
     private GameObject Dialog;
     private Toggle Wall;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +58,7 @@ public class Settings : MonoBehaviour
             // Quit the application
             Bck();
         }
-        if(Wall != null)
+        if (Wall != null)
         {
             if (Wall.isOn == true) PlayerPrefs.SetString("rainbow", "true");
             else PlayerPrefs.SetString("rainbow", "false");

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 public class door : MonoBehaviour
 {
@@ -19,19 +17,19 @@ public class door : MonoBehaviour
     {
         source = GetComponent<AudioSource>();
 
-            for (int i = 0; i < numbers.Length; i++)
-            {
-                int closureIndex = i; // Prevents the closure problem
-                numbers[closureIndex].onClick.AddListener(() => TaskOnClick(closureIndex));
-            }
-        
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            int closureIndex = i; // Prevents the closure problem
+            numbers[closureIndex].onClick.AddListener(() => TaskOnClick(closureIndex));
+        }
+
         dialog.SetActive(false);
         exit.onClick.AddListener(quit);
         accept.onClick.AddListener(acept);
     }
     void acept()
     {
-       
+
         if (input.text == PlayerPrefs.GetInt("password").ToString())
         {
             source.PlayOneShot(error);
@@ -45,7 +43,7 @@ public class door : MonoBehaviour
             source.PlayOneShot(error);
         }
     }
-    void TaskOnClick(int button) 
+    void TaskOnClick(int button)
     {
         password += button.ToString();
         input.text = password;
@@ -59,27 +57,27 @@ public class door : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             dialog.SetActive(true);
             Time.timeScale = 0f;
-        
+
         }
     }
     private void OnTriggerExit2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
 
             dialog.SetActive(false);
             Time.timeScale = 1f;
-            
+
         }
     }
     // Update is called once per frame
     void Update()
     {
-        
-    
+
+
     }
 }

@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class InDevelopment : MonoBehaviour
 {
     public Button Back;
@@ -25,6 +23,6 @@ public class InDevelopment : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

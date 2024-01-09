@@ -1,9 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.Advertisements;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class controller : MonoBehaviour
 {
@@ -34,8 +31,8 @@ public class controller : MonoBehaviour
     void Start()
     {
         m_rbMain = GetComponent<Rigidbody2D>();
-         source = GetComponent<AudioSource>();
-        switch(PlayerPrefs.GetInt("skin"))
+        source = GetComponent<AudioSource>();
+        switch (PlayerPrefs.GetInt("skin"))
         {
             case 0:
                 sr.sprite = def;
@@ -68,10 +65,10 @@ public class controller : MonoBehaviour
             PlayerPrefs.SetInt("LEVEL", numberOfLevel);
         }
         win.SetActive(false);
-        
+
         Finish.SetActive(false);
         Next = Next.GetComponent<Button>();
- 
+
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -83,10 +80,11 @@ public class controller : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "InvertControls") {
+        if (other.gameObject.tag == "InvertControls")
+        {
             m_binvCtrls = true;
         }
-        if(other.gameObject.tag == "health")
+        if (other.gameObject.tag == "health")
         {
             PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") + 1);
             Destroy(other.gameObject);
@@ -96,7 +94,7 @@ public class controller : MonoBehaviour
             Next.interactable = true;
             Time.timeScale = 0.0f;
             win.SetActive(true);
-           
+
         }
         if (other.gameObject.tag == "key")
         {
@@ -104,7 +102,7 @@ public class controller : MonoBehaviour
             Finish.SetActive(true);
             Key.SetActive(false);
         }
-        if(other.gameObject.tag == "NextOne")
+        if (other.gameObject.tag == "NextOne")
         {
             Camera.main.transform.position = camLocation2;
             m_rbMain.transform.position = PlyLocation2;
@@ -115,7 +113,7 @@ public class controller : MonoBehaviour
             m_rbMain.transform.position = PlyLocation1;
         }
 
-        if (other.gameObject.tag == "enemy") 
+        if (other.gameObject.tag == "enemy")
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") - 1);
@@ -131,13 +129,15 @@ public class controller : MonoBehaviour
             source.PlayOneShot(clip);
         }
 
-        if(other.gameObject.tag == "Switch"){
-        	other.gameObject.GetComponent<Switch>().status = true;
-        	
+        if (other.gameObject.tag == "Switch")
+        {
+            other.gameObject.GetComponent<Switch>().status = true;
+
         }
-        if(other.gameObject.tag == "SwitchDouble"){
-        	other.gameObject.GetComponent<SwitchDouble>().status = true;
-        	
+        if (other.gameObject.tag == "SwitchDouble")
+        {
+            other.gameObject.GetComponent<SwitchDouble>().status = true;
+
         }
     }
 
@@ -165,8 +165,8 @@ public class controller : MonoBehaviour
             moveHorizontal = Input.acceleration.x;
             moveVertical = Input.acceleration.y;
         }
-        if(m_binvCtrls)
-         m_vk2MoveVector = new Vector2(-moveHorizontal, -moveVertical).normalized * m_fSpeed;
+        if (m_binvCtrls)
+            m_vk2MoveVector = new Vector2(-moveHorizontal, -moveVertical).normalized * m_fSpeed;
         else
             m_vk2MoveVector = new Vector2(moveHorizontal, moveVertical).normalized * m_fSpeed;
     }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class rotaterb : MonoBehaviour
 {
@@ -17,8 +15,8 @@ public class rotaterb : MonoBehaviour
     void FixedUpdate()
     {
         rb.rotation = angle;
-        angle= angle + rotatespeed;
-        if(angle == 360)
+        angle = angle + rotatespeed;
+        if (angle == 360)
         {
             angle = 0;
         }

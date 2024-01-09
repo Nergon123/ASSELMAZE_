@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class StarAdd : MonoBehaviour
 {
@@ -8,11 +6,11 @@ public class StarAdd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             switch (PlayerPrefs.GetInt(LevelNow))
             {
@@ -36,6 +34,6 @@ public class StarAdd : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

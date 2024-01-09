@@ -1,13 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Shop1 : MonoBehaviour
 {
     [SerializeField] private Button[] m_bBuy;
-    [SerializeField] private int[] m_iId,m_iCost;
+    [SerializeField] private int[] m_iId, m_iCost;
     public Text text;
 
     // Start is called before the first frame update
@@ -52,7 +50,7 @@ public class Shop1 : MonoBehaviour
 
     void SetButton()
     {
-        for(int i = 0;i < m_bBuy.Length; i++)
+        for (int i = 0; i < m_bBuy.Length; i++)
         {
             int x = i;
             m_bBuy[x].onClick.AddListener(delegate { Buy(m_iId[x], m_iCost[x]); });

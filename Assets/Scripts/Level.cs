@@ -1,12 +1,10 @@
-﻿ using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
-public class Level : MonoBehaviour,IUnityAdsListener
+public class Level : MonoBehaviour, IUnityAdsListener
 {
     public GameObject win;
     public GameObject keyInInterface;
@@ -43,7 +41,7 @@ public class Level : MonoBehaviour,IUnityAdsListener
     // Start is called before the first frame update
     void Start()
     {
-        
+
         PlayerPrefs.SetString("pause", "false");
         NextLevelad.interactable = false;
         Advertisement.AddListener(this);
@@ -61,14 +59,14 @@ public class Level : MonoBehaviour,IUnityAdsListener
         ad = 0;
         AdOk.onClick.AddListener(adok);
         keyInInterface.SetActive(false);
-        numberoflevel = int.Parse(nextLevel.Replace("LEVEL","")) - 1;
+        numberoflevel = int.Parse(nextLevel.Replace("LEVEL", "")) - 1;
         switch (Application.systemLanguage)
         {
             case SystemLanguage.Russian:
                 menu = "Меню";
                 cntinue = "Продолжить";
                 lvl = "Уровень";
-                exitg = "Выйти из игры!"; 
+                exitg = "Выйти из игры!";
                 reklama = "Пропустить уровень";
                 mmenu = "Главное меню";
                 lvlcmplt = "Уровень пройден";
@@ -120,7 +118,7 @@ public class Level : MonoBehaviour,IUnityAdsListener
             ad++;
         }
     }
-    public void OnUnityAdsDidFinish(string placementId,ShowResult showResult)
+    public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
         Debug.Log(placementId);
         if (placementId == myPlacementId)
@@ -146,8 +144,8 @@ public class Level : MonoBehaviour,IUnityAdsListener
                 }
             }
         }
-        if(showResult == ShowResult.Skipped){}
-        if(showResult == ShowResult.Failed)
+        if (showResult == ShowResult.Skipped) { }
+        if (showResult == ShowResult.Failed)
         {
             AdResultObj.SetActive(true);
             switch (Application.systemLanguage)
@@ -164,9 +162,9 @@ public class Level : MonoBehaviour,IUnityAdsListener
             }
         }
     }
-    public void OnUnityAdsReady(string placementId){}
+    public void OnUnityAdsReady(string placementId) { }
     public void OnUnityAdsDidError(string message) { Debug.Log(message); }
-    public void OnUnityAdsDidStart(string placementId){}
+    public void OnUnityAdsDidStart(string placementId) { }
     void Contn()
     {
         Time.timeScale = 1.0f;
@@ -188,14 +186,16 @@ public class Level : MonoBehaviour,IUnityAdsListener
 
     void Nxt()
     {
-    	if(Ad==true){
-        Advertisement.Show();
-        Debug.Log("AD Showed");
-    	}
-    	if(endOfChapter == true){
-    		PlayerPrefs.SetInt("CHAPTER",NextChapter);
-    	}
-    	Time.timeScale = 1.0f;
+        if (Ad == true)
+        {
+            Advertisement.Show();
+            Debug.Log("AD Showed");
+        }
+        if (endOfChapter == true)
+        {
+            PlayerPrefs.SetInt("CHAPTER", NextChapter);
+        }
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(nextLevel);
     }
     void Mn()
@@ -208,7 +208,7 @@ public class Level : MonoBehaviour,IUnityAdsListener
     void Update()
     {
         NextLevelad.interactable = Advertisement.IsReady(myPlacementId);
-        if(GameObject.Find("/player"))
+        if (GameObject.Find("/player"))
             keyInInterface.SetActive(GameObject.Find("/player").GetComponent<controller>().haskey);
     }
 }

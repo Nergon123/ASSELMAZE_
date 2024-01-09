@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class OnlyControll : MonoBehaviour
@@ -23,7 +21,7 @@ public class OnlyControll : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CheckMove(); 
+        CheckMove();
     }
     private void FixedUpdate()
     {
