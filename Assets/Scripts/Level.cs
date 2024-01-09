@@ -47,7 +47,6 @@ public class Level : MonoBehaviour,IUnityAdsListener
         PlayerPrefs.SetString("pause", "false");
         NextLevelad.interactable = false;
         Advertisement.AddListener(this);
-        Advertisement.Initialize(gameId);
         //GameObjects
         Finish.SetActive(false);
         MenuDialog.SetActive(false);
