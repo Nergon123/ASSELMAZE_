@@ -1,0 +1,173 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.Advertisements;
+using UnityEngine.SceneManagement;
+
+public class controller : MonoBehaviour
+{
+
+    public bool m_binvCtrls = false;
+    public SpriteRenderer sr;
+    public Sprite def;
+    public Sprite pizza;
+    public Vector3 camLocation1;
+    public Vector3 camLocation2;
+    public Vector3 camLocation3;
+    public Vector2 PlyLocation1;
+    public Vector2 PlyLocation2;
+    public Vector2 PlyLocation3;
+    public Button Next;
+    public Rigidbody2D m_rbMain;
+    public float m_fSpeed = 1f;
+    public GameObject Finish;
+    public GameObject Key;
+    public GameObject win;
+    public int numberOfLevel;
+    AudioSource source;
+    public AudioClip clip;
+    public AudioClip clipkick;
+    public bool haskey = false;
+
+    private Vector2 m_vk2MoveVector;
+    void Start()
+    {
+        m_rbMain = GetComponent<Rigidbody2D>();
+         source = GetComponent<AudioSource>();
+        switch(PlayerPrefs.GetInt("skin"))
+        {
+            case 0:
+                sr.sprite = def;
+                break;
+            case 1:
+                sr.sprite = pizza;
+                break;
+            case 2:
+                sr.color = Color.red;
+                break;
+            case 3:
+                sr.color = Color.blue;
+                break;
+            case 4:
+                sr.color = Color.green;
+                break;
+            case 5:
+                sr.color = Color.magenta;
+                break;
+            case 6:
+                sr.color = Color.cyan;
+                break;
+            case 100:
+                sr.color = Color.black;
+                break;
+        }
+
+        if (PlayerPrefs.GetInt("LEVEL") < numberOfLevel)
+        {
+            PlayerPrefs.SetInt("LEVEL", numberOfLevel);
+        }
+        win.SetActive(false);
+        
+        Finish.SetActive(false);
+        Next = Next.GetComponent<Button>();
+ 
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "wall")
+        {
+            source.PlayOneShot(clipkick, 1);
+        }
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "InvertControls") {
+            m_binvCtrls = true;
+        }
+        if(other.gameObject.tag == "health")
+        {
+            PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") + 1);
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.tag == "Finish")
+        {
+            Next.interactable = true;
+            Time.timeScale = 0.0f;
+            win.SetActive(true);
+           
+        }
+        if (other.gameObject.tag == "key")
+        {
+            haskey = true;
+            Finish.SetActive(true);
+            Key.SetActive(false);
+        }
+        if(other.gameObject.tag == "NextOne")
+        {
+            Camera.main.transform.position = camLocation2;
+            m_rbMain.transform.position = PlyLocation2;
+        }
+        if (other.gameObject.tag == "PrevOne")
+        {
+            Camera.main.transform.position = camLocation1;
+            m_rbMain.transform.position = PlyLocation1;
+        }
+
+        if (other.gameObject.tag == "enemy") 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            PlayerPrefs.SetInt("hp", PlayerPrefs.GetInt("hp") - 1);
+            if (PlayerPrefs.GetInt("hp") < 0)
+            {
+                PlayerPrefs.SetInt("LEVEL", 1);
+                SceneManager.LoadScene("LEVEL1");
+
+            }
+        }
+        if (other.gameObject.tag == "coin")
+        {
+            source.PlayOneShot(clip);
+        }
+
+        if(other.gameObject.tag == "Switch"){
+        	other.gameObject.GetComponent<Switch>().status = true;
+        	
+        }
+        if(other.gameObject.tag == "SwitchDouble"){
+        	other.gameObject.GetComponent<SwitchDouble>().status = true;
+        	
+        }
+    }
+
+
+
+    void Update()
+    {
+        CheckMove();
+    }
+    private void FixedUpdate()
+    {
+        m_rbMain.AddForce(m_vk2MoveVector * Time.deltaTime);
+    }
+    public void CheckMove()
+    {
+        float moveHorizontal = 0;
+        float moveVertical = 0;
+        if (SystemInfo.deviceType == DeviceType.Desktop)
+        {
+            moveHorizontal = Input.GetAxis("Horizontal");
+            moveVertical = Input.GetAxis("Vertical");
+        }
+        else
+        {
+            moveHorizontal = Input.acceleration.x;
+            moveVertical = Input.acceleration.y;
+        }
+        if(m_binvCtrls)
+         m_vk2MoveVector = new Vector2(-moveHorizontal, -moveVertical).normalized * m_fSpeed;
+        else
+            m_vk2MoveVector = new Vector2(moveHorizontal, moveVertical).normalized * m_fSpeed;
+    }
+}
