@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private Button SNG, Continue, rateGame, Settings, Quit, telegram;
+    private Button SNG, Continue, rateGame, Settings, Quit;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +36,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
-    void ABLIST()
-    {
-        SceneManager.LoadScene("About");
-    }
     void RBLIST()
     {
         //Rate a app

@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-public enum Lagnguage
+public enum Language
 {
     En,
-    Ru,
-    Sp
+    Ua
 }
 public class LoadDictionarys : MonoBehaviour
 {
     private static Dictionary<string, string> m_dcAllWord = new Dictionary<string, string>();
-    private static Lagnguage m_enSavCh;
-    public static Lagnguage m_enChangebl
+    private static Language m_enSavCh;
+    public static Language m_enChangebl
     {
         get=> m_enSavCh;
         set
@@ -24,26 +23,32 @@ public class LoadDictionarys : MonoBehaviour
 
     private static bool Init()
     {
+        if (m_bInit) return true;
+
         LocalizeSettings lcst = Resources.Load<LocalizeSettings>("localize");
         if (!lcst)
         {
             Debug.LogError("You dont have localize File");
             return false;
         }
-        m_enSavCh = (Lagnguage)PlayerPrefs.GetInt("Language");
+        m_enSavCh = (Language)PlayerPrefs.GetInt("Language");
         if(lcst.m_lLanguage.Count > 0)
-            foreach(Word lg in lcst.m_lLanguage[(int)m_enChangebl].m_lisAllWards)
+        {
+            foreach (Word lg in lcst.m_lLanguage[(int)m_enChangebl].m_lisAllWards)
             {
                 m_dcAllWord.Add(lg.m_strKey, lg.m_strValue);
             }
+
+        }
         m_bInit = true;
         return true;
     }
     public static string GetValue(string Key)
     {
         if (!Init()) return Key;
-        string value;
-        m_dcAllWord.TryGetValue(Key,out value);
+
+        m_dcAllWord.TryGetValue(Key,out string value);
+
         value ??= Key;
 
         

@@ -8,20 +8,18 @@ public class Settings : MonoBehaviour
     private Button Back, Reset, Close, Yes, No;
     [SerializeField]
     private GameObject Dialog;
-    private Toggle Wall;
 
-    // Start is called before the first frame update
     void Start()
     {
-        if (Reset != null)
+        if (Reset)
             Reset.onClick.AddListener(RST);
-        if (Back != null)
+        if (Back)
             Back.onClick.AddListener(Bck);
-        if (Close != null)
+        if (Close)
             Close.onClick.AddListener(CLS);
-        if (Yes != null)
+        if (Yes)
             Yes.onClick.AddListener(YS);
-        if (No != null)
+        if (No)
             No.onClick.AddListener(N);
     }
     void RST()
@@ -54,17 +52,8 @@ public class Settings : MonoBehaviour
         // Check if back was pressed this frame
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
             // Quit the application
             Bck();
-        }
-        if (Wall != null)
-        {
-            if (Wall.isOn == true) PlayerPrefs.SetString("rainbow", "true");
-            else PlayerPrefs.SetString("rainbow", "false");
-
-            if (PlayerPrefs.GetString("rainbow") == "true") Wall.isOn = true;
-            else Wall.isOn = false;
         }
     }
 }

@@ -70,6 +70,7 @@ public class Level : MonoBehaviour
         {
             PlayerPrefs.SetInt("CHAPTER", NextChapter);
         }
+        Time.timeScale = 1;
         SceneManager.LoadScene(nextLevel);
     }
     void Mn()
