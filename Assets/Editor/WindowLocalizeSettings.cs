@@ -102,9 +102,9 @@ public class WindowLocalizeSettings : EditorWindow
             EditorGUILayout.LabelField(Mai.m_lLanguage[i].m_strNameLanguage, GUILayout.Width(50));
             if (GUILayout.Button("X", GUILayout.Width(25), GUILayout.Height(25)))
             {
+                int t = i;
                 if (Mai.m_lLanguage.Count > 0)
-                    Mai.m_lLanguage.Remove(Mai.m_lLanguage[i]);
-                return;
+                    Mai.m_lLanguage.Remove(Mai.m_lLanguage[t]);
             }
             EditorGUILayout.EndHorizontal();
         }
@@ -117,7 +117,6 @@ public class WindowLocalizeSettings : EditorWindow
             if (GUILayout.Button("X", GUILayout.Width(25), GUILayout.Height(25)))
             {
                 for (int i = 0; i < Mai.m_lLanguage.Count; i++) Mai.m_lLanguage[i].m_lisAllWards.RemoveAt(a);
-                return;
             }
 
             string NewS = EditorGUILayout.TextField(Mai.m_lLanguage[0].m_lisAllWards[a].m_strKey);

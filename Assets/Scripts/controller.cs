@@ -82,6 +82,7 @@ public class controller : MonoBehaviour
     {
         var Hp = PlayerPrefs.GetInt("hp");
         var coins = PlayerPrefs.GetInt("coins");
+
         if (other.gameObject.tag == "InvertControls")
         {
             m_binvCtrls = true;
