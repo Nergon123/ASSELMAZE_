@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class controller : MonoBehaviour
 {
@@ -76,10 +76,12 @@ public class controller : MonoBehaviour
         {
             source.PlayOneShot(clipkick, 0.5f);
         }
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
         var Hp = PlayerPrefs.GetInt("hp");
+        var coins = PlayerPrefs.GetInt("coins");
         if (other.gameObject.tag == "InvertControls")
         {
             m_binvCtrls = true;
@@ -127,6 +129,9 @@ public class controller : MonoBehaviour
         if (other.gameObject.tag == "coin")
         {
             source.PlayOneShot(clip);
+            coins++;
+            PlayerPrefs.SetInt("coins", coins);
+            Destroy(other.gameObject);
         }
 
         if (other.gameObject.tag == "Switch")

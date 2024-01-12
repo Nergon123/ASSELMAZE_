@@ -28,12 +28,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7209720331579165968}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.3735, y: -3.7515, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.78533}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7209720331579165970
 SpriteRenderer:
@@ -46,6 +47,7 @@ SpriteRenderer:
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -103,6 +105,12 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: d2b3592249b39444b9409969cd71780b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 0
   m_CollisionDetection: 0
@@ -117,6 +125,25 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 6200000, guid: d2b3592249b39444b9409969cd71780b, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -145,7 +172,6 @@ MonoBehaviour:
   PlyLocation1: {x: 0, y: 0}
   PlyLocation2: {x: 0, y: 0}
   PlyLocation3: {x: 0, y: 0}
-  Next: {fileID: 0}
   m_rbMain: {fileID: 0}
   m_fSpeed: 0.05
   Finish: {fileID: 0}
@@ -153,6 +179,7 @@ MonoBehaviour:
   win: {fileID: 0}
   numberOfLevel: 0
   clip: {fileID: 8300000, guid: c8799fba85316f74da4c7391114e483a, type: 3}
+  coin: {fileID: 8300000, guid: c8799fba85316f74da4c7391114e483a, type: 3}
   clipkick: {fileID: 8300000, guid: a72162dc83f1a4147a2796b86f6276fa, type: 3}
   haskey: 0
 --- !u!82 &1345152037186606135
