@@ -1,19 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TextLocalize : MonoBehaviour
 {
-    public string Key;
+    public string m_strKey;
+    private Text m_txMain;
     void Start()
     {
-        LoadDictionarys.m_enChangebl = Lagnguage.Sp;
-        Debug.Log(LoadDictionarys.GetValue(Key));
-    }
+        m_txMain = GetComponentInChildren<Text>();
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (m_strKey.Equals("") || m_strKey.Equals(" ")) m_strKey = m_txMain.text;
+
+        m_txMain.text = LoadDictionarys.GetValue(m_strKey);
     }
 }

@@ -7,13 +7,12 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     [SerializeField]
-    private Button SNG, Continue, rateGame, Settings, Quit, telegram;
+    private Button SNG, Continue, rateGame, Settings, Quit;
 
     // Start is called before the first frame update
     void Start()
     {
 
-        telegram.onClick.AddListener(telega);
         SNG.onClick.AddListener(NGLIST);
         Continue.onClick.AddListener(CNLIST);
         rateGame.onClick.AddListener(RBLIST);
@@ -22,11 +21,6 @@ public class MainMenu : MonoBehaviour
 
     }
 
-
-    void telega()
-    {
-        Application.OpenURL("https://t.me/joinchat/M07FXExnAG0tqZjyyeftgA");
-    }
     void NGLIST()
     {
         SceneManager.LoadScene("Chapters");
@@ -42,10 +36,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("Settings");
     }
 
-    void ABLIST()
-    {
-        SceneManager.LoadScene("About");
-    }
     void RBLIST()
     {
         //Rate a app

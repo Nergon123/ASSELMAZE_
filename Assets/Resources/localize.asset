@@ -21,50 +21,24 @@ MonoBehaviour:
       m_strValue: Continue
     - m_strKey: Settings
       m_strValue: Settings
-    - m_strKey: Dialog1
-      m_strValue: Hi|I'm your friend
-    - m_strKey: You start fight
-      m_strValue: You start fight
-    - m_strKey: Frog
-      m_strValue: Frog
     - m_strKey: Damaged
       m_strValue: damaged
-    - m_strKey: Sell
-      m_strValue: Sell
-    - m_strKey: Map
-      m_strValue: Map
-    - m_strKey: Act
-      m_strValue: Act
-    - m_strKey: Inventory
-      m_strValue: Inventory
     - m_strKey: Buy
       m_strValue: Buy
-  - m_strNameLanguage: Ru
-    m_lisAllWards:
-    - m_strKey: New Game
-      m_strValue: "\u041D\u043E\u0432\u0430\u044F \u0418\u0433\u0440\u0430"
-    - m_strKey: Continue
-      m_strValue: "\u041F\u0440\u043E\u0434\u043E\u043B\u0436\u0438\u0442\u044C"
-    - m_strKey: Settings
-      m_strValue: "\u041D\u0430\u0441\u0442\u0440\u043E\u0439\u043A\u0438"
-    - m_strKey: Dialog1
-      m_strValue: Hi|I'm your friend
-    - m_strKey: You start fight
-      m_strValue: "\u0422\u044B \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u043B"
-    - m_strKey: Frog
-      m_strValue: "\u041B\u044F\u0433\u0443\u0448\u043A\u0430"
-    - m_strKey: Damaged
-      m_strValue: "\u043D\u0430\u043D\u0451\u0441"
-    - m_strKey: Sell
-      m_strValue: "\u041F\u0440\u043E\u0434\u0430\u0442\u044C"
-    - m_strKey: Map
-      m_strValue: "\u041A\u0430\u0440\u0442\u0430"
-    - m_strKey: Act
-      m_strValue: "\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u0435"
-    - m_strKey: Inventory
-      m_strValue: "\u0418\u043D\u0432\u0435\u043D\u0442\u0430\u0440\u044C"
-    - m_strKey: Buy
-      m_strValue: "\u041A\u0443\u043F\u0442\u044C"
+    - m_strKey: SETTINGS
+      m_strValue: SETTINGS
+    - m_strKey: Volume
+      m_strValue: Volume
+    - m_strKey: BACK
+      m_strValue: BACK
+    - m_strKey: RESET PROGRESS
+      m_strValue: RESET PROGRESS
+    - m_strKey: Yes
+      m_strValue: Yes
+    - m_strKey: No
+      m_strValue: No
+    - m_strKey: Are you sure about Reseting progress?
+      m_strValue: Are you sure about Reseting progress?
   - m_strNameLanguage: Ua
     m_lisAllWards:
     - m_strKey: New Game
@@ -73,21 +47,21 @@ MonoBehaviour:
       m_strValue: "\u041F\u0440\u043E\u0434\u043E\u0432\u0436\u0438\u0442\u0438"
     - m_strKey: Settings
       m_strValue: "\u041D\u0430\u043B\u0430\u0448\u0442\u0443\u0432\u0430\u043D\u043D\u044F"
-    - m_strKey: Dialog1
-      m_strValue: Hi|I'm your friend
-    - m_strKey: You start fight
-      m_strValue: "\u0422\u0438 \u0430\u0442\u0430\u043A\u043E\u0432\u0430\u0432"
-    - m_strKey: Frog
-      m_strValue: "\u0416\u0430\u0431\u0430"
     - m_strKey: Damaged
       m_strValue: "\u043D\u0430\u043D\u0456\u0441"
-    - m_strKey: Sell
-      m_strValue: "\u041F\u0440\u043E\u0434\u0430\u0442\u0438"
-    - m_strKey: Map
-      m_strValue: "\u041C\u0430\u043F\u0430"
-    - m_strKey: Act
-      m_strValue: "\u0414\u0456\u044F"
-    - m_strKey: Inventory
-      m_strValue: "\u0406\u043D\u0432\u0435\u043D\u0442\u0430\u0440"
     - m_strKey: Buy
       m_strValue: "\u041A\u0443\u043F\u0438\u0442\u0438"
+    - m_strKey: SETTINGS
+      m_strValue: "\u041D\u0410\u041B\u0410\u0428\u0422\u0423\u0412\u0410\u041D\u041D\u042F"
+    - m_strKey: Volume
+      m_strValue: "\u0413\u0443\u0447\u043D\u0456\u0441\u0442\u044C"
+    - m_strKey: BACK
+      m_strValue: New word
+    - m_strKey: RESET PROGRESS
+      m_strValue: New word
+    - m_strKey: Yes
+      m_strValue: New word
+    - m_strKey: No
+      m_strValue: New word
+    - m_strKey: Are you sure about Reseting progress?
+      m_strValue: New word
