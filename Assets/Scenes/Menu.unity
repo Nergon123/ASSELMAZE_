@@ -1935,7 +1935,6 @@ GameObject:
   - component: {fileID: 1112711851}
   - component: {fileID: 1112711850}
   - component: {fileID: 1112711849}
-  - component: {fileID: 1112711854}
   - component: {fileID: 1112711853}
   m_Layer: 5
   m_Name: Canvas
@@ -2047,18 +2046,6 @@ MonoBehaviour:
   Settings: {fileID: 1014259753}
   Quit: {fileID: 1167719273}
   telegram: {fileID: 0}
---- !u!114 &1112711854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1112711848}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 790154ab081c2cb4cad053b52c0c2db2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1167719271
 GameObject:
   m_ObjectHideFlags: 0

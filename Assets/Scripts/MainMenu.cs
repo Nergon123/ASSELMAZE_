@@ -13,7 +13,6 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
 
-        telegram.onClick.AddListener(telega);
         SNG.onClick.AddListener(NGLIST);
         Continue.onClick.AddListener(CNLIST);
         rateGame.onClick.AddListener(RBLIST);
@@ -22,11 +21,6 @@ public class MainMenu : MonoBehaviour
 
     }
 
-
-    void telega()
-    {
-        Application.OpenURL("https://t.me/joinchat/M07FXExnAG0tqZjyyeftgA");
-    }
     void NGLIST()
     {
         SceneManager.LoadScene("Chapters");
