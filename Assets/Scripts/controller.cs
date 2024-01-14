@@ -33,33 +33,7 @@ public class controller : MonoBehaviour
         m_rbMain = GetComponent<Rigidbody2D>();
         source = GetComponent<AudioSource>();
 
-        switch (PlayerPrefs.GetInt("skin"))
-        {
-            case 0:
-                sr.sprite = def;
-                break;
-            case 1:
-                sr.sprite = pizza;
-                break;
-            case 2:
-                sr.color = Color.red;
-                break;
-            case 3:
-                sr.color = Color.blue;
-                break;
-            case 4:
-                sr.color = Color.green;
-                break;
-            case 5:
-                sr.color = Color.magenta;
-                break;
-            case 6:
-                sr.color = Color.cyan;
-                break;
-            case 100:
-                sr.color = Color.black;
-                break;
-        }
+        SkinManager.SetPlayerSkin(sr);
 
         if (PlayerPrefs.GetInt("LEVEL") < numberOfLevel)
         {
@@ -74,7 +48,7 @@ public class controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "wall")
         {
-            source.PlayOneShot(clipkick, 0.5f);
+            source.PlayOneShot(clipkick, 1f);
         }
 
     }

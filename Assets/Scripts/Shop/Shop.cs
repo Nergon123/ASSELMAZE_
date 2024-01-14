@@ -63,6 +63,7 @@ public class Shop : MonoBehaviour
                 m_inCurPos++;
                 m_imChRight = c.m_mgmObject[c.m_mgmObject.Length - 1].GetComponent<Image>();
                 SetRRight();
+
             });
         });
         if (m_btRight) m_btRight.onClick.AddListener(() =>
@@ -110,10 +111,12 @@ public class Shop : MonoBehaviour
     public void SetLLeft()
     {
         var l = m_inCurPos - 1;
-        if (l == 0) l = m_lsObjectForBuy.m_lsSkins.Count - 2;
-        else if (l == -1) l = m_lsObjectForBuy.m_lsSkins.Count - 3;
+        if (l == 0) l = m_lsObjectForBuy.m_lsSkins.Count - 1;
+        else if (l == -1) l = m_lsObjectForBuy.m_lsSkins.Count - 2;
         else l--;
+
         var Left = m_lsObjectForBuy.m_lsSkins[l] == null ? null : m_lsObjectForBuy.m_lsSkins[l];
+
         if (m_imChLeft) SetSkin(m_imChLeft, Left);
     }
     public void SetRRight()
@@ -122,11 +125,12 @@ public class Shop : MonoBehaviour
         if (l == m_lsObjectForBuy.m_lsSkins.Count -1) l = 0;
         else if (l >= m_lsObjectForBuy.m_lsSkins.Count) l = 1;
         else l++;
+
         var Right = m_lsObjectForBuy.m_lsSkins[l] == null ? null : m_lsObjectForBuy.m_lsSkins[l];
         if (m_imChLeft) SetSkin(m_imChRight, Right);
     }
 
-    public void SetSkin(Image gm,PlayerSkinSettings set) => SkinManager.SetSkin(m_imChRight, set, m_sprDefault);
+    public void SetSkin(Image gm,PlayerSkinSettings Sets) => SkinManager.SetSkin(gm, Sets, m_sprDefault);
     #endregion
 
     #region Buy
@@ -188,6 +192,7 @@ public class Shop : MonoBehaviour
         }
     }
     #endregion
+    public void Exit() => SceneManager.LoadScene(0);
 }
 
 [System.Serializable]

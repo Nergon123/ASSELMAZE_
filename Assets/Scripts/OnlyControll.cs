@@ -9,6 +9,8 @@ public class OnlyControll : MonoBehaviour
     void Start()
     {
         m_rbMain = GetComponent<Rigidbody2D>();
+
+        SkinManager.SetPlayerSkin(GetComponent<SpriteRenderer>());
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,7 +20,6 @@ public class OnlyControll : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    // Update is called once per frame
     void Update()
     {
         CheckMove();

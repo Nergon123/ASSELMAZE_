@@ -86,17 +86,26 @@ public class SkinManager
             m_evValueCh?.Invoke(_m_inSkinId);
         }
     }
-    public static bool Bought(int index)
-    {
-        if (PlayerPrefs.GetInt("skin" + index.ToString(), 0) == 0) return false;
-        return true;
-    }
+
     public static void SetSkin(Image gm, PlayerSkinSettings pl, Sprite Default = default)
     {
         if (pl is PlayerSkinColored c)
         {
             gm.color = c.m_clColor;
-            gm.sprite = Default;
+            if (Default != default) gm.sprite = Default;
+        }
+        else if (pl is PlayerSkinPng p)
+        {
+            gm.color = Color.white;
+            gm.sprite = p.m_sprSprite;
+        }
+    }
+    public static void SetSkin(SpriteRenderer gm, PlayerSkinSettings pl, Sprite Default = default)
+    {
+        if (pl is PlayerSkinColored c)
+        {
+            gm.color = c.m_clColor;
+            if(Default != default) gm.sprite = Default;
         }
         else if (pl is PlayerSkinPng p)
         {
@@ -105,6 +114,14 @@ public class SkinManager
         }
     }
     public static void SetPlayerSkin(Image gm)=> SetSkin(gm, m_siscrSkins.m_lsSkins[m_inSkinId]);
+    public static void SetPlayerSkin(SpriteRenderer gm)=> SetSkin(gm, m_siscrSkins.m_lsSkins[m_inSkinId]);
+    public static PlayerSkinSettings GetSkin(int Id) => m_siscrSkins.m_lsSkins[Id];
+
+    public static bool Bought(int index)
+    {
+        if (PlayerPrefs.GetInt("skin" + index.ToString(), 0) == 0) return false;
+        return true;
+    }
     public static bool BuySkin(int Id)
     {
         if(CoinManager.m_inCoin >= GetSkin(Id).m_inCost && !Bought(Id))
@@ -122,7 +139,6 @@ public class SkinManager
 
         return true;
     }
-    public static PlayerSkinSettings GetSkin(int Id) => m_siscrSkins.m_lsSkins[Id];
 
 
 }
