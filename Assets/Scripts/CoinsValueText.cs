@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+    [System.Serializable]
 public class CoinsValueText : MonoBehaviour
 {
     Text text;
@@ -7,11 +8,17 @@ public class CoinsValueText : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-    }
 
-    // Update is called once per frame
-    void Update()
+        text.text = "x " + CoinManager.m_inCoin.ToString();
+
+        CoinManager.m_evValueCh += OnCoinCh;
+    }
+    public void OnDestroy()
     {
-        text.text = "x " + PlayerPrefs.GetInt("coins").ToString();
+        CoinManager.m_evValueCh -= OnCoinCh;
+    }
+    public void OnCoinCh(int c)
+    {
+        text.text = "x " + c.ToString();
     }
 }

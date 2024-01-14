@@ -23,9 +23,4 @@ public class BlackHardMode : MonoBehaviour
             PlayerPrefs.SetInt("skin", 100);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }
