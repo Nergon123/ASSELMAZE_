@@ -6,25 +6,6 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    public Image m_imChLeft, m_imChRight;
-    [SerializeField]
-    private Button m_btLeft,m_btRight;
-
-    private PlayerSettings _m_lsObjectForBuy;
-    public PlayerSettings m_lsObjectForBuy
-    {
-        get
-        {
-            if (!_m_lsObjectForBuy) _m_lsObjectForBuy = CoinManager.m_siscrSkins;
-            return _m_lsObjectForBuy;
-        }
-        private set { _m_lsObjectForBuy = value; }
-    }
-    [SerializeField]
-    private Sprite m_sprDefault;
-
-    [SerializeField]
-    private Image m_imLeft, m_imMiddle, m_imRight;
 
     private int _m_inCurPos = 0;
     private int m_inCurPos
@@ -35,35 +16,65 @@ public class Shop : MonoBehaviour
             _m_inCurPos = value;
             if (_m_inCurPos >= m_lsObjectForBuy.m_lsSkins.Count) _m_inCurPos = 0;
             else if (_m_inCurPos < 0) _m_inCurPos = m_lsObjectForBuy.m_lsSkins.Count - 1;
+            if (m_btBuyOrEquip) OnFocusCh();
         }
     }
+
+
     public void Start()
     {
+        m_inCurPos = SkinManager.m_inSkinId;
+        SetupVisualizer();
+        SetupBuyMethod();
+
+
+    }
+
+    #region Visualize
+    [Header("Visualize")]
+    public Image m_imChLeft;
+    public Image m_imChRight;
+    [SerializeField]
+    private Button m_btLeft, m_btRight;
+
+    private PlayerSettings _m_lsObjectForBuy;
+    public PlayerSettings m_lsObjectForBuy
+    {
+        get
+        {
+            if (!_m_lsObjectForBuy) _m_lsObjectForBuy = SkinManager.m_siscrSkins;
+            return _m_lsObjectForBuy;
+        }
+        private set { _m_lsObjectForBuy = value; }
+    }
+    [SerializeField]
+    private Sprite m_sprDefault;
+
+    [SerializeField]
+    private Image m_imLeft, m_imMiddle, m_imRight;
+    public void SetupVisualizer()
+    {
         var c = GetComponent<ShopManagerUi>();
-        SetCur();
         if (m_btLeft) m_btLeft.onClick.AddListener(() =>
-          {
-              c.SwipeRight(() =>
-              {
-                  m_inCurPos++;
-                  m_imChRight = c.m_mgmObject[c.m_mgmObject.Length -1].GetComponent<Image>();
-                  SetRRight();
-              });
-          });
+        {
+            m_btBuyOrEquip.interactable = false;
+            c.SwipeRight(() =>
+            {
+                m_inCurPos++;
+                m_imChRight = c.m_mgmObject[c.m_mgmObject.Length - 1].GetComponent<Image>();
+                SetRRight();
+            });
+        });
         if (m_btRight) m_btRight.onClick.AddListener(() =>
         {
-
-            c.Swipeleft(()=> 
+            m_btBuyOrEquip.interactable = false;
+            c.Swipeleft(() =>
             {
                 m_inCurPos--;
                 m_imChLeft = c.m_mgmObject[0].GetComponent<Image>();
                 SetLLeft();
             });
         });
-    }
-
-    public void SetCur()
-    {
         SetLeft();
         SetCenter();
         SetRight();
@@ -78,7 +89,7 @@ public class Shop : MonoBehaviour
         if (l == m_inCurPos) Left = null;
 
         if (Left == null) Destroy(m_imLeft.gameObject);
-        else SetSkin(m_imLeft, Left);
+        else SkinManager.SetSkin(m_imLeft, Left, m_sprDefault);
     }
     public void SetRight()
     {
@@ -94,13 +105,13 @@ public class Shop : MonoBehaviour
     public void SetCenter()
     {
         var current = m_lsObjectForBuy.m_lsSkins[m_inCurPos];
-        SetSkin(m_imMiddle, current);
+        SkinManager.SetSkin(m_imMiddle, current, m_sprDefault);
     }
     public void SetLLeft()
     {
         var l = m_inCurPos - 1;
-        if (l == 0) l = m_lsObjectForBuy.m_lsSkins.Count - 1;
-        else if (l == -1) l = m_lsObjectForBuy.m_lsSkins.Count - 2;
+        if (l == 0) l = m_lsObjectForBuy.m_lsSkins.Count - 2;
+        else if (l == -1) l = m_lsObjectForBuy.m_lsSkins.Count - 3;
         else l--;
         var Left = m_lsObjectForBuy.m_lsSkins[l] == null ? null : m_lsObjectForBuy.m_lsSkins[l];
         if (m_imChLeft) SetSkin(m_imChLeft, Left);
@@ -114,20 +125,69 @@ public class Shop : MonoBehaviour
         var Right = m_lsObjectForBuy.m_lsSkins[l] == null ? null : m_lsObjectForBuy.m_lsSkins[l];
         if (m_imChLeft) SetSkin(m_imChRight, Right);
     }
-    public void SetSkin(Image gm,PlayerSkinSettings pl)
+
+    public void SetSkin(Image gm,PlayerSkinSettings set) => SkinManager.SetSkin(m_imChRight, set, m_sprDefault);
+    #endregion
+
+    #region Buy
+    [Space(10)]
+    [Header("Buy Method")]
+    [SerializeField]
+    private Button m_btBuyOrEquip;
+
+    private void SetupBuyMethod()
     {
-        if (pl is PlayerSkinColored c)
+        if(m_btBuyOrEquip) m_btBuyOrEquip.onClick.AddListener(() =>
         {
-            
-            gm.color = c.m_clColor ;
-            gm.sprite = m_sprDefault;
+            if (!SkinManager.Bought(m_inCurPos))
+                OnBuy();
+            else
+                OnEquip();
+
+        });
+    }
+    public void OnBuy()
+    {
+        if(SkinManager.BuySkin(m_inCurPos)) m_inCurPos = m_inCurPos;
+
+    }
+    public void OnEquip()
+    {
+        SkinManager.m_inSkinId = m_inCurPos;
+        m_inCurPos = m_inCurPos;
+    }
+    public void OnFocusCh()
+    {
+        var text = m_btBuyOrEquip.GetComponentInChildren<Text>();
+        if (SkinManager.Bought(m_inCurPos))
+        {
+            if(m_inCurPos == SkinManager.m_inSkinId)
+            {
+                m_btBuyOrEquip.interactable = false;
+                text.text = LoadDictionarys.GetValue("Equiped");
+            }
+            else
+            {
+                m_btBuyOrEquip.interactable = true;
+                text.text = LoadDictionarys.GetValue("Equip");
+            }
         }
-        else if (pl is PlayerSkinPng p)
+        else
         {
-            gm.color = Color.white;
-            gm.sprite = p.m_sprSprite;
+            m_btBuyOrEquip.onClick.RemoveListener(OnEquip);
+            if (SkinManager.CanBuy(m_inCurPos))
+            {
+                m_btBuyOrEquip.interactable = true;
+                text.text = SkinManager.GetSkin(m_inCurPos).m_inCost.ToString();
+            }
+            else
+            {
+                m_btBuyOrEquip.interactable = false;
+                text.text = LoadDictionarys.GetValue("You can't buy") + $"Cost:{SkinManager.GetSkin(m_inCurPos).m_inCost}";
+            }
         }
     }
+    #endregion
 }
 
 [System.Serializable]

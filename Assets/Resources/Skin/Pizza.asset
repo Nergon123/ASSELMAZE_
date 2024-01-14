@@ -12,6 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6091cc2476c6649b3e966b34d5c993, type: 3}
   m_Name: Pizza
   m_EditorClassIdentifier: 
-  m_inId: 1
-  m_strName: dd
+  m_inCost: 100
   m_sprSprite: {fileID: 21300000, guid: 14fba3b557fded3459d96beb3c4acf54, type: 3}
