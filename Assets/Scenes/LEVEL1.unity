@@ -253,7 +253,7 @@ GameObject:
   - component: {fileID: 74838580}
   m_Layer: 0
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1344,24 +1344,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &121673145 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7209720331579165968, guid: 0122d9bf3946592489f94c74807f32da,
-    type: 3}
-  m_PrefabInstance: {fileID: 7209720330821177233}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &121673146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121673145}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc9c96b3fb05cad4994ff547b1204838, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &130936928
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9535,11 +9517,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7209720331579165968, guid: 0122d9bf3946592489f94c74807f32da,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 121673146}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0122d9bf3946592489f94c74807f32da, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
