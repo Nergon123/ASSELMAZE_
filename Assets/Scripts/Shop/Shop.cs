@@ -179,15 +179,14 @@ public class Shop : MonoBehaviour
         else
         {
             m_btBuyOrEquip.onClick.RemoveListener(OnEquip);
+            text.text = LoadDictionarys.GetValue("Cost") + ":" + SkinManager.GetSkin(m_inCurPos).m_inCost.ToString();
             if (SkinManager.CanBuy(m_inCurPos))
             {
                 m_btBuyOrEquip.interactable = true;
-                text.text = SkinManager.GetSkin(m_inCurPos).m_inCost.ToString();
             }
             else
             {
                 m_btBuyOrEquip.interactable = false;
-                text.text = LoadDictionarys.GetValue("You can't buy") + $"Cost:{SkinManager.GetSkin(m_inCurPos).m_inCost}";
             }
         }
     }
