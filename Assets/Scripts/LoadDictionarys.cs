@@ -12,7 +12,7 @@ public class LoadDictionarys : MonoBehaviour
     private static Language m_enSavCh;
     public static Language m_enChangebl
     {
-        get=> m_enSavCh;
+        get => m_enSavCh;
         set
         {
             m_enSavCh = value;
@@ -32,7 +32,7 @@ public class LoadDictionarys : MonoBehaviour
             return false;
         }
         m_enSavCh = (Language)PlayerPrefs.GetInt("Language");
-        if(lcst.m_lLanguage.Count > 0)
+        if (lcst.m_lLanguage.Count > 0)
         {
             foreach (Word lg in lcst.m_lLanguage[(int)m_enChangebl].m_lisAllWards)
             {
@@ -47,11 +47,8 @@ public class LoadDictionarys : MonoBehaviour
     {
         if (!Init()) return Key;
 
-        m_dcAllWord.TryGetValue(Key,out string value);
-
+        m_dcAllWord.TryGetValue(Key, out string value);
         value ??= Key;
-
-        
         return value;
     }
 }

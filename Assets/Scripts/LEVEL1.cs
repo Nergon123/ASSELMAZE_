@@ -7,10 +7,4 @@ public class LEVEL1 : MonoBehaviour
     {
         PlayerPrefs.SetInt("hp", 10);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

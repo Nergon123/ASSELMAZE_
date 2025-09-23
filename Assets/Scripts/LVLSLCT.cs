@@ -25,46 +25,12 @@ public class LVLSLCT : MonoBehaviour
         B3.onClick.AddListener(Btn3);
         B2.onClick.AddListener(Btn2);
         B1.onClick.AddListener(Btn1);
-
-        switch (PlayerPrefs.GetInt("LEVEL"))
-        {
-            case 0:
-                B1.interactable = true;
-                B2.interactable = false;
-                B3.interactable = false;
-                B4.interactable = false;
-                B5.interactable = false;
-                break;
-            case 1:
-                B1.interactable = true;
-                B2.interactable = true;
-                B3.interactable = false;
-                B4.interactable = false;
-                B5.interactable = false;
-                break;
-            case 2:
-                B1.interactable = true;
-                B2.interactable = true;
-                B3.interactable = true;
-                B4.interactable = false;
-                B5.interactable = false;
-                break;
-            case 3:
-                B1.interactable = true;
-                B2.interactable = true;
-                B3.interactable = true;
-                B4.interactable = true;
-                B5.interactable = false;
-                break;
-            case 4:
-                B1.interactable = true;
-                B2.interactable = true;
-                B3.interactable = true;
-                B4.interactable = true;
-                B5.interactable = true;
-                break;
-
-        }
+        int lvl = PlayerPrefs.GetInt("LEVEL");
+        B1.interactable = lvl >= 0;
+        B2.interactable = lvl >= 1;
+        B3.interactable = lvl >= 2;
+        B4.interactable = lvl >= 3;
+        B5.interactable = lvl >= 4;
     }
     void Btn5()
     {
@@ -94,11 +60,8 @@ public class LVLSLCT : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Check if Back was pressed this frame
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            // Quit the application
             Backl();
         }
     }

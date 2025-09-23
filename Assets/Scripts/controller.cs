@@ -74,6 +74,11 @@ public class controller : MonoBehaviour
         if (other.gameObject.tag == "key")
         {
             haskey = true;
+            linetoggle[] toggles = GameObject.FindObjectsByType<linetoggle>(FindObjectsSortMode.InstanceID);
+            foreach (linetoggle toggle in toggles)
+            {
+                toggle.setHasKey(haskey);
+            }
             Finish.SetActive(true);
             Key.SetActive(false);
         }
@@ -92,7 +97,7 @@ public class controller : MonoBehaviour
         {
             Hp--;
 
-            PlayerPrefs.SetInt("hp",Hp);
+            PlayerPrefs.SetInt("hp", Hp);
 
             if (Hp < 0)
             {
@@ -133,8 +138,8 @@ public class controller : MonoBehaviour
     }
     public void CheckMove()
     {
-        float moveHorizontal = 0;
-        float moveVertical = 0;
+        float moveHorizontal;
+        float moveVertical;
         if (SystemInfo.deviceType == DeviceType.Desktop)
         {
             moveHorizontal = Input.GetAxis("Horizontal");

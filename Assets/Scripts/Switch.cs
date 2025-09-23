@@ -20,19 +20,16 @@ public class Switch : MonoBehaviour
             _status = value;
             if (_status && m_crMain == null)
                 m_crMain = StartCoroutine(Coroutine());
-
         }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-
         audioSource = GetComponent<AudioSource>();
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = off;
         status = false;
-
     }
     IEnumerator Coroutine()
     {
@@ -45,7 +42,6 @@ public class Switch : MonoBehaviour
         sr.sprite = off;
         m_crMain = null;
         status = false;
-
     }
     // Update is called once per fram
 }

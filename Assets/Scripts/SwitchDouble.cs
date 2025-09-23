@@ -46,8 +46,6 @@ public class SwitchDouble : MonoBehaviour
         audioSource.Stop();
         status = false;
         sr.sprite = off;
-
         m_crMain = null;
-
     }
 }

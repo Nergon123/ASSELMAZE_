@@ -23,9 +23,5 @@ public class lineinvisible : MonoBehaviour
             sr.color = Color.clear;
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
 
-    }
 }

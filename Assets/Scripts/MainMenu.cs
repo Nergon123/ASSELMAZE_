@@ -12,13 +12,11 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         SNG.onClick.AddListener(NGLIST);
         Continue.onClick.AddListener(CNLIST);
         rateGame.onClick.AddListener(RBLIST);
         Settings.onClick.AddListener(STLIST);
         Quit.onClick.AddListener(Application.Quit);
-
     }
 
     void NGLIST()
@@ -39,17 +37,14 @@ public class MainMenu : MonoBehaviour
     void RBLIST()
     {
         //Rate a app
-        Application.OpenURL("market://details?id=com.pandd.AccelMaze");
+        //Application.OpenURL("market://details?id=com.pandd.AccelMaze");// DO NOT RATE THE APP (it doesn't exist there)
     }
 
     // Update is called once per frame
     void Update()
     {
-        // Check if Back was pressed this frame
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            // Quit the application
             Application.Quit();
         }
     }

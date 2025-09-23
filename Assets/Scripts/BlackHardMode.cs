@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+
+//Now it's seems to be a little bit racist.
+//Back in 2020 when I was writing this I wasn't thinking about that...
 public class BlackHardMode : MonoBehaviour
 {
     Button but;
@@ -16,10 +19,10 @@ public class BlackHardMode : MonoBehaviour
     {
         text.fontSize = 70;
         count++;
-        text.text = "Click " + (5 - count).ToString() + " times to Enable black skin";
+        text.text = "Click " + (5 - count).ToString() + " times to Enable invisible skin";
         if (count >= 5)
         {
-            text.text = "Hard (black skin) mode enabled!";
+            text.text = "Hard (invisible) mode enabled!";
             PlayerPrefs.SetInt("skin", 100);
         }
     }

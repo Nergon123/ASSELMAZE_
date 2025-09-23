@@ -25,7 +25,6 @@ public class Settings : MonoBehaviour
     void RST()
     {
         Dialog.SetActive(true);
-
     }
     void Bck()
     {

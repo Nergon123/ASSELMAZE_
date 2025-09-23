@@ -7,13 +7,12 @@ public class lineskin : MonoBehaviour
     SpriteRenderer sr;
     void Start()
     {
-
         sr = GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (PlayerPrefs.GetString("rainbow") == "true")
+        if (PlayerPrefs.GetString("rainbow") == "true") // string as booleans... waste of data
         {
             if (collision.gameObject.tag == "Player")
             {
@@ -21,9 +20,5 @@ public class lineskin : MonoBehaviour
             }
         }
 
-    }
-    // Update is called once per frame
-    void Update()
-    {
     }
 }

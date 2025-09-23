@@ -9,21 +9,18 @@ public class About : MonoBehaviour
     void Start()
     {
         Button Back = BACK.GetComponent<Button>();
-        Back.onClick.AddListener(Bck);
+        Back.onClick.AddListener(Return);
     }
-    void Bck()
+    void Return()
     {
         SceneManager.LoadScene("Menu");
     }
     // Update is called once per frame
     void Update()
     {
-        // Check if Back was pressed this frame
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-
-            // Quit the application
-            Bck();
+            Return();
         }
     }
 }

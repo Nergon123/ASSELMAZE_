@@ -15,37 +15,15 @@ public class ChapterMenu : MonoBehaviour
     {
         C1.onClick.AddListener(Chapter1);
         C2.onClick.AddListener(Chapter2);
-        C3.onClick.AddListener(Chapter3);
-        C4.onClick.AddListener(Chapter4);
+        //Those doesn't exists
+        // C3.onClick.AddListener(Chapter3); 
+        // C4.onClick.AddListener(Chapter4); 
         Back.onClick.AddListener(BackToMenu);
-        switch (PlayerPrefs.GetInt("CHAPTER", 1))
-        {
-            case 1:
-                C1.interactable = true;
-                C2.interactable = false;
-                C3.interactable = false;
-                C4.interactable = false;
-                break;
-            case 2:
-                C1.interactable = true;
-                C2.interactable = true;
-                C3.interactable = false;
-                C4.interactable = false;
-                break;
-            case 3:
-                C1.interactable = true;
-                C2.interactable = true;
-                C3.interactable = true;
-                C4.interactable = false;
-                break;
-            case 4:
-                C1.interactable = true;
-                C2.interactable = true;
-                C3.interactable = true;
-                C4.interactable = true;
-                break;
-
-        }
+        int chaptersUnlocked = PlayerPrefs.GetInt("CHAPTER", 1);
+        C1.interactable = chaptersUnlocked > 0;
+        C2.interactable = chaptersUnlocked > 1;
+        // C3.interactable = chaptersUnlocked > 2;
+        // C4.interactable = chaptersUnlocked > 3;
     }
 
     void Chapter1()
@@ -67,11 +45,5 @@ public class ChapterMenu : MonoBehaviour
     void BackToMenu()
     {
         SceneManager.LoadScene("Menu");
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

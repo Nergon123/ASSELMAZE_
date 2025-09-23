@@ -41,7 +41,7 @@ public class Level : MonoBehaviour
     void NextLevel()
     {
         Time.timeScale = 1f;
-        PlayerPrefs.SetString("pause", "false");
+        PlayerPrefs.SetString("pause", "false"); // THIS is terrible but I fear that if I change that I can break something. I don't really remember anything from here
         SceneManager.LoadScene(nextLevel);
     }
 

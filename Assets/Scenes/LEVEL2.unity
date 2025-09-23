@@ -318,6 +318,21 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3645344546351138610, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645344546351138610, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645344546351138610, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5.9999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645344546351138610, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.9
       objectReference: {fileID: 0}
@@ -325,6 +340,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -0.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3645344546351138610, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
+        type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5263724016543183547, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.21
       objectReference: {fileID: 0}
     - target: {fileID: 5962099952612202261, guid: b5e2d62e7cd1b4d4bbaed1f8ffee4441,
         type: 3}
@@ -2308,8 +2333,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7209720331579165973, guid: 0122d9bf3946592489f94c74807f32da,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7209720331579165973, guid: 0122d9bf3946592489f94c74807f32da,
+        type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 7209720331579165973, guid: 0122d9bf3946592489f94c74807f32da,
         type: 3}

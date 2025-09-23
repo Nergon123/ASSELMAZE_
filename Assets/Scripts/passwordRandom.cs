@@ -25,9 +25,4 @@ public class passwordRandom : MonoBehaviour
             dialog.SetActive(false);
         }
     }
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 }

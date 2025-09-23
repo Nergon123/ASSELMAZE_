@@ -25,7 +25,6 @@ public class Controll3D : MonoBehaviour
     {
         if (other.gameObject.tag == "key")
         {
-
             Debug.Log("ENTER");
             Finish.SetActive(true);
             Key.SetActive(false);
@@ -78,7 +77,6 @@ public class Controll3D : MonoBehaviour
         }
         Vector3 movement = new Vector3(Input.acceleration.x, 0, Input.acceleration.y);
         rb.AddForce(movement * speed * Time.deltaTime);
-
     }
 }
 
